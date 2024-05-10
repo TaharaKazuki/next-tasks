@@ -1,7 +1,5 @@
 import TaskCard from '@/components/TaskCard/TaskCard';
 import { TaskDocument } from '@/models/task';
-import Link from 'next/link';
-import { MdAddTask } from 'react-icons/md';
 
 const getExpiredTasks = async (): Promise<TaskDocument[]> => {
   const response = await fetch(`${process.env.API_URL}/tasks/expired`, {
