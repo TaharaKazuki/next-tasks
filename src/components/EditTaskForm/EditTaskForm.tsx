@@ -11,13 +11,16 @@ const EditTaskForm = ({ task }: EditTaskForm) => {
   const [formData, setFormData] = useState({
     title: task.title,
     description: task.description,
+    dueDate: task.dueDate,
+    isCompleted: task.isCompleted,
   });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+    const { name, value, checked } = e.target;
+    const status = name === 'isCompleted' ? checked : value;
     setFormData((prevState) => ({
       ...prevState,
-      [name]: value,
+      [name]: status,
     }));
   };
 
@@ -58,7 +61,8 @@ const EditTaskForm = ({ task }: EditTaskForm) => {
           </label>
           <input
             type="date"
-            value={stateTask.dueDate}
+            value={formData.dueDate}
+            onChange={handleChange}
             id="dueDate"
             name="dueDate"
             min="2020-01-01"
@@ -70,7 +74,8 @@ const EditTaskForm = ({ task }: EditTaskForm) => {
         <div className="mt-6 flex items-center">
           <input
             type="checkbox"
-            value={task.isCompleted}
+            checked={formData.isCompleted}
+            onChange={handleChange}
             id="isCompleted"
             name="isCompleted"
             className="mr-2 w-4 h-4"
