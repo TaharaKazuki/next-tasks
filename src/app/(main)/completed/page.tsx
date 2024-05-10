@@ -8,9 +8,7 @@ const CompletedTaskPage = () => {
           Completed Tasks
         </h1>
       </header>
-      <div className="mt-8 flex flex-wrap gap-4">
-        <TaskCard />
-      </div>
+      <div className="mt-8 flex flex-wrap gap-4">{/* <TaskCard /> */}</div>
     </div>
   );
 };

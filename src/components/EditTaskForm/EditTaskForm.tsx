@@ -1,4 +1,26 @@
-const EditTaskForm = () => {
+'use client';
+import { ChangeEvent, useState } from 'react';
+import { Task, TaskDocument } from '@/models/task';
+import { title } from 'process';
+
+type EditTaskForm = {
+  task: TaskDocument;
+};
+
+const EditTaskForm = ({ task }: EditTaskForm) => {
+  const [formData, setFormData] = useState({
+    title: task.title,
+    description: task.description,
+  });
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
   return (
     <div className="mt-10 mx-auto w-full max-w-sm">
       <form action="">
@@ -8,6 +30,8 @@ const EditTaskForm = () => {
           </label>
           <input
             type="text"
+            value={formData.title}
+            onChange={handleChange}
             id="title"
             name="title"
             required
@@ -20,6 +44,8 @@ const EditTaskForm = () => {
           </label>
           <input
             type="description"
+            value={formData.description}
+            onChange={handleChange}
             id="description"
             name="description"
             required
@@ -32,6 +58,7 @@ const EditTaskForm = () => {
           </label>
           <input
             type="date"
+            value={stateTask.dueDate}
             id="dueDate"
             name="dueDate"
             min="2020-01-01"
@@ -43,6 +70,7 @@ const EditTaskForm = () => {
         <div className="mt-6 flex items-center">
           <input
             type="checkbox"
+            value={task.isCompleted}
             id="isCompleted"
             name="isCompleted"
             className="mr-2 w-4 h-4"
