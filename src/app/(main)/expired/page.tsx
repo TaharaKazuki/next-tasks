@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { MdAddTask } from 'react-icons/md';
 
 const getExpiredTasks = async (): Promise<TaskDocument[]> => {
-  const response = await fetch(`${process.env.API_URL}/tasks/completed`, {
+  const response = await fetch(`${process.env.API_URL}/tasks/expired`, {
     cache: 'no-cache',
   });
   if (response.status !== 200) {
