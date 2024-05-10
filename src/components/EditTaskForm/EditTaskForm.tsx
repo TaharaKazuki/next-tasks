@@ -26,9 +26,9 @@ const EditTaskForm = ({ task }: EditTaskForm) => {
     }));
   };
 
-  const updateTaskWidId = updateTask.bind(null, task._id);
+  const updateTaskWithId = updateTask.bind(null, task._id);
   const initialState: FormState = { error: '' };
-  const [state, formAction] = useFormState(updateTaskWidId, initialState);
+  const [state, formAction] = useFormState(updateTaskWithId, initialState);
 
   const SubmitButton = () => {
     const { pending } = useFormStatus();
