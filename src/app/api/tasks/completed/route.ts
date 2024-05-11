@@ -10,15 +10,12 @@ export const GET = async () => {
     });
 
     return NextResponse.json({
-      message: '完了タスク取得成功',
+      message: 'タスク取得成功',
       tasks: completedTasks,
     });
   } catch (error) {
-    console.info(error);
-    return NextResponse.json(
-      { message: '完了タスク取得失敗' },
-      { status: 500 }
-    );
+    console.log(error);
+    return NextResponse.json({ message: 'タスク取得失敗' }, { status: 500 });
   }
 };
 
