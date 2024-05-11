@@ -3,7 +3,7 @@ import { TaskDocument } from '@/models/task';
 
 const getCompletedTasks = async (): Promise<TaskDocument[]> => {
   const response = await fetch(`${process.env.API_URL}/tasks/completed`, {
-    cache: 'no-cache',
+    cache: 'no-store',
   });
   if (response.status !== 200) {
     throw new Error();
